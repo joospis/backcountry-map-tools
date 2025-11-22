@@ -24,7 +24,7 @@ PROJECT_ROOT = os.path.abspath(os.path.join(LIB_DIR, '..'))
 DATA_DIR = os.path.join(PROJECT_ROOT, 'data')
 
 DEFAULT_CACHE_DIR = os.path.join(DATA_DIR, "extracted", "dem")
-DEFAULT_OUT_DIR = os.path.join(DATA_DIR, "out")
+DEFAULT_OUT_DIR = os.path.join(DATA_DIR, "processed", "dem")
 # --- END FIXED PATHS ---
 
 
