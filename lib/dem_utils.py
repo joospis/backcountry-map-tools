@@ -15,9 +15,17 @@ from .bbox import BoundingBox
 
 USGS_BASE = "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/current"
 
-# Updated cache directory per user request
-DEFAULT_CACHE_DIR = "../data/extracted/dem"
-DEFAULT_OUT_DIR = "../data/out"
+# --- FIXED PATHS ---
+# Get the directory of this file (proj/lib)
+LIB_DIR = os.path.dirname(os.path.abspath(__file__))
+# Get the project root directory (proj)
+PROJECT_ROOT = os.path.abspath(os.path.join(LIB_DIR, '..'))
+# Define data paths based on the project root
+DATA_DIR = os.path.join(PROJECT_ROOT, 'data')
+
+DEFAULT_CACHE_DIR = os.path.join(DATA_DIR, "extracted", "dem")
+DEFAULT_OUT_DIR = os.path.join(DATA_DIR, "out")
+# --- END FIXED PATHS ---
 
 
 # ---------------------------------------------------------
@@ -170,25 +178,3 @@ def fetch_and_clip_dem(bbox: BoundingBox,
     return merge_and_clip(
         tile_paths, bbox, out_dir=out_dir
     )
-
-# Example Usage
-if __name__ == "__main__":
-    # Import BoundingBox for the example
-    from bbox import BoundingBox
-    
-    # 1. Define parameters
-    # BBOX for a region in Nebraska/South Dakota
-    NE_SD_BBOX = BoundingBox(xmin=-103.0, ymin=42.8, xmax=-102.5, ymax=43.2)
-    
-    # 2. Run the process
-    print("--- Fetching DEM ---")
-    final_dem_path = fetch_and_clip_dem(
-        bbox=NE_SD_BBOX,
-        cache_dir=DEFAULT_CACHE_DIR,
-        out_dir=DEFAULT_OUT_DIR
-    )
-    
-    if final_dem_path:
-        print(f"\nFinal DEM created at: {final_dem_path}")
-    else:
-        print("\nDEM creation failed.")

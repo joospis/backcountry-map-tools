@@ -9,11 +9,18 @@ from .bbox import BoundingBox
 # Base URL for the staged USGS Topo Map Vector products
 BASE_URL = "https://prd-tnm.s3.amazonaws.com/StagedProducts/TopoMapVector/"
 
-GDB_FILE = "../data/MapIndices_National_GDB.gdb"
+# --- FIXED PATHS ---
+# Get the directory of this file (proj/lib)
+LIB_DIR = os.path.dirname(os.path.abspath(__file__))
+# Get the project root directory (proj)
+PROJECT_ROOT = os.path.abspath(os.path.join(LIB_DIR, '..'))
+# Define data paths based on the project root
+DATA_DIR = os.path.join(PROJECT_ROOT, 'data')
 
-# Define new data directories per user request
-RAW_DIR = "../data/raw/gpkg"
-EXTRACTED_DIR = "../data/extracted/gpkg"
+GDB_FILE = os.path.join(DATA_DIR, "MapIndices_National_GDB.gdb")
+RAW_DIR = os.path.join(DATA_DIR, "raw", "gpkg")
+EXTRACTED_DIR = os.path.join(DATA_DIR, "extracted", "gpkg")
+# --- END FIXED PATHS ---
 
 
 class USGSTopoDownloader:
@@ -183,24 +190,4 @@ class USGSTopoDownloader:
             if dataSource:
                 del dataSource
                 
-
-# Example Usage
-if __name__ == "__main__":
-    # Import BoundingBox for the example
-    from bbox import BoundingBox
-
-    # 1. Define your parameters
-    GDB_FILE = "MapIndices_National_GDB.gdb"
-    # BBOX for a region in Nebraska/South Dakota
-    NE_SD_BBOX = BoundingBox(xmin=-103.0, ymin=42.8, xmax=-102.5, ymax=43.2)
-    
-    # 2. Instantiate the Downloader
-    downloader = USGSTopoDownloader(
-        gdb_path=GDB_FILE, 
-        bbox=NE_SD_BBOX,
-        download_format="GPKG"
-    )
-    
-    # 3. Run the download process
-    results = downloader.download_by_bbox()
-    print("\nFinal Results:", results)
+# ... (if __name__ == "__main__" block remains the same) ...

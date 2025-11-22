@@ -39,7 +39,7 @@ def main():
     
     parser.add_argument(
         '--gdb',
-        default="../data/MapIndices_National_GDB.gdb",
+        default="./data/MapIndices_National_GDB.gdb",
         help="Path to the MapIndices_National_GDB.gdb file."
     )
     

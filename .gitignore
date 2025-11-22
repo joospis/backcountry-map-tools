@@ -2,3 +2,4 @@ data/extracted/*
 data/processed/*
 data/raw/*
 data/tiles/*
+lib/__pycache__
