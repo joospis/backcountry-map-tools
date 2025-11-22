@@ -1,0 +1,4 @@
+data/extracted/*
+data/processed/*
+data/raw/*
+data/tiles/*
