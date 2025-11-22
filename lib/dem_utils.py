@@ -16,8 +16,8 @@ from .bbox import BoundingBox
 USGS_BASE = "https://prd-tnm.s3.amazonaws.com/StagedProducts/Elevation/1/TIFF/current"
 
 # Updated cache directory per user request
-DEFAULT_CACHE_DIR = "./data/extracted/dem"
-DEFAULT_OUT_DIR = "./data/out"
+DEFAULT_CACHE_DIR = "../data/extracted/dem"
+DEFAULT_OUT_DIR = "../data/out"
 
 
 # ---------------------------------------------------------

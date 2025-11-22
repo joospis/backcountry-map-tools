@@ -9,9 +9,11 @@ from .bbox import BoundingBox
 # Base URL for the staged USGS Topo Map Vector products
 BASE_URL = "https://prd-tnm.s3.amazonaws.com/StagedProducts/TopoMapVector/"
 
+GDB_FILE = "../data/MapIndices_National_GDB.gdb"
+
 # Define new data directories per user request
-RAW_DIR = "./data/raw/gpkg"
-EXTRACTED_DIR = "./data/extracted/gpkg"
+RAW_DIR = "../data/raw/gpkg"
+EXTRACTED_DIR = "../data/extracted/gpkg"
 
 
 class USGSTopoDownloader:
@@ -19,7 +21,7 @@ class USGSTopoDownloader:
     Queries the national USGS Map Index GDB for 7.5-minute quadrangle
     data intersecting a bounding box and downloads/extracts the GPKG files.
     """
-    def __init__(self, gdb_path: str, bbox: BoundingBox, download_format="GPKG"):
+    def __init__(self, bbox: BoundingBox, download_format="GPKG", gdb_path: str = GDB_FILE):
         """
         Initializes the downloader.
 
