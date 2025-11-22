@@ -3,3 +3,4 @@ data/processed/*
 data/raw/*
 data/tiles/*
 lib/__pycache__
+**/.DS_Store
